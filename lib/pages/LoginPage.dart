@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../widgets/BottomNavBar.dart';
 import 'HomePage.dart';
 import 'LogupPage.dart';
 
@@ -66,7 +67,7 @@ class LoginPage extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => HomePage()),
+                      MaterialPageRoute(builder: (context) => BottomNavBar()),
                     );
                   },
                   child: Text(

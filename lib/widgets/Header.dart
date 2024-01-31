@@ -4,14 +4,24 @@ import '../pages/change_profile.dart';
 import '../pages/change_service.dart';
 import '../pages/v_service_manager_page.dart';
 
-class Header extends StatelessWidget {
+class Header extends StatefulWidget {
   final bool back;
+  final bool search;
 
-  const Header({
+
+  Header({
     super.key,
     required this.back,
+    required this.search,
   });
-  
+
+  @override
+  State<Header> createState() => _HeaderState();
+}
+
+class _HeaderState extends State<Header> {
+  bool admin = true;
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -19,7 +29,7 @@ class Header extends StatelessWidget {
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            back ? BackButton() : Text(''),
+            widget.back ? BackButton() : Text(''),
             Expanded(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -33,64 +43,59 @@ class Header extends StatelessWidget {
                 ],
               ),
             ),
-            IconButton(
-              icon: Icon(Icons.more_vert),
-              onPressed: () {
-                showMenu(
-                  context: context,
-                  position: RelativeRect.fromLTRB(100, 100, 0, 0),
-                  items: [
-                    PopupMenuItem<String>(
-                      value: 'option_1',
-                      child: Text('Vendor Service Manager'),
-                    ),
-                    PopupMenuItem<String>(
-                      value: 'option_2',
-                      child: Text('Change service'),
-                    ),
-                    PopupMenuItem<String>(
-                      value: 'option_3',
-                      child: Text('Change Profile'),
-                    ),
-                  ],
-                ).then((value) {
-                  // Handle menu item selection
-                  if (value == 'option_1') {
-                    // Redirect to the pre-declared Option2Page
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => VServiceManagerPage()),
-                    );
+          IconButton(
+  icon: Icon(Icons.more_vert),
+  onPressed: () {
+    showMenu(
+      context: context,
+      position: RelativeRect.fromLTRB(100, 0, 0, 0),
+      items: [
+        PopupMenuItem<String>(
+          value: 'admin',
+          child: Row(
+            children: [
+              Expanded(child: Text('Je suis admin')),
+              Switch(
+                value: admin,
+                onChanged: (value) {
+                  setState(() {
+                    admin = value;
+                    print('Admin status: $admin');
+                  });
+                },
+              ),
+            ],
+          ),
+        ),
+        // Ajoutez d'autres éléments de menu si nécessaire
+      ],
+    ).then((value) {
+      // Gérez la sélection d'élément de menu
+      if (value == 'option_1') {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => VServiceManagerPage()),
+        );
+      } else if (value == 'option_2') {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => ChangeService()),
+        );
+      } else if (value == 'option_3') {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => ChangeProfile()),
+        );
+      } else {
+        print('Selected: $value');
+      }
+    });
+  },
+),
 
-                  } else {
-                    print('Selected: $value');
-                  }
-                  if (value == 'option_2') {
-                    // Redirect to the pre-declared Option2Page
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => ChangeService()),
-                    );
-
-                  } else {
-                    print('Selected: $value');
-                  }
-                  if (value == 'option_3') {
-                    // Redirect to the pre-declared Option2Page
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => ChangeProfile()),
-                    );
-
-                  } else {
-                    print('Selected: $value');
-                  }
-                });
-              },
-            ),
           ],
         ),
-        Padding(
+    widget.search ? Padding(
           padding: const EdgeInsets.symmetric(vertical: 20.0),
           child: Row(
             children: [
@@ -128,7 +133,8 @@ class Header extends StatelessWidget {
               )
             ],
           ),
-        ),
+        ) : Text('') ,
+      
       ],
     );
   }

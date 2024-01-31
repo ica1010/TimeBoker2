@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:time_boker/pages/v_service_manager_page.dart';
+import 'package:time_boker/widgets/Header.dart';
 
 import '../generated/assets.dart';
 
@@ -18,34 +18,12 @@ class RevervationState extends State<Revervation> {
       body:
               ListView(
                 children: [
+   
                   Padding(
-                    padding: const EdgeInsets.all(18.0),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        IconButton(
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
-                            icon: Icon(Icons.arrow_back)),
-                        Expanded(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Image.asset('img/logo.png'),
-                              Text(
-                                'book it',
-                                style: TextStyle(fontSize: 20),
-                              ),
-                            ],
-                          ),
-                        ),
-                        IconButton(
-                            onPressed: () {}, icon: Icon(Icons.notifications))
-                      ],
-                    ),
+                    padding: const EdgeInsets.symmetric(horizontal: 18.0),
+                    child: Header(back: false, search: false),
                   ),
+                 
                   Container(
                     padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
                     margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),

@@ -21,11 +21,11 @@ class _HomePagesState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 18),
+        padding: const EdgeInsets.symmetric(horizontal: 18),
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Header(back: false),
+              Header(back: false ,search: true,),
               Container(
                 height: 150,
                 margin: EdgeInsets.only(top: 18),

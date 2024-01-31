@@ -29,7 +29,7 @@ class ServiceDetailState extends State<ServiceDetail> {
                 children: [
                   Expanded(
                     child: Container(
-                      height: 35,
+                      height: 40,
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.all(Radius.circular(30.0)),
@@ -57,7 +57,7 @@ class ServiceDetailState extends State<ServiceDetail> {
               children: [
                 Expanded(
                   child: Container(
-                    height: 35,
+                    height:40,
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.all(Radius.circular(30.0)),
@@ -81,6 +81,7 @@ class ServiceDetailState extends State<ServiceDetail> {
             Padding(
               padding: const EdgeInsets.only(top: 28.0, bottom: 10),
               child: Container(
+                height: 40,
                 decoration: BoxDecoration(
                     color: Colors.blue,
                     borderRadius: BorderRadius.circular(18)),

@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/Header.dart';
@@ -15,13 +16,13 @@ class _ServiceListState extends State<ServiceList> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 18),
+        padding: const EdgeInsets.only(top: 30, right: 18, left: 18 ),
         child: Column(
           children: [
-            Header(back: true),
+            Header(back: true, search: false,),
             Expanded(
               child: GridView.count(
-                childAspectRatio: 4 / 5.7,
+                childAspectRatio: 4 / 7,
                 crossAxisCount: 2,
                 mainAxisSpacing: 18,
                 crossAxisSpacing: 18,
@@ -47,11 +48,13 @@ class _ServiceListState extends State<ServiceList> {
                       ),
                       child: Column(
                         children: [
-                          Container(
-                            height: 140,
-                            child: Image.asset(
-                              item['Fimage'] ?? 'img/image 3.png',
-                              fit: BoxFit.cover,
+                          Expanded(
+                            child: Container(
+                              height: 140,
+                              child: Image.asset(
+                                item['Fimage'] ?? 'img/image 3.png',
+                                 fit: BoxFit.cover,
+                              ),
                             ),
                           ), // Remplacez 'default_image.png' par le chemin de votre image par défaut
                           Row(
@@ -61,15 +64,15 @@ class _ServiceListState extends State<ServiceList> {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text(
+                                    AutoSizeText(
                                       item['Name'] ?? 'Nom du Service',
                                       style: TextStyle(
                                         fontWeight: FontWeight.w700,
-                                        fontSize: 15,
+                                        fontSize: 14,
                                       ),
                                       maxLines: 1,
                                     ),
-                                    Text(
+                                  AutoSizeText(
                                       item['City'] ?? 'Description du Service',
                                       style: TextStyle(fontSize: 12),
                                       maxLines: 1,

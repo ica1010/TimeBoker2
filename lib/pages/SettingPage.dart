@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:time_boker/pages/Pocket.dart';
+import 'package:time_boker/pages/change_profile.dart';
+import 'package:time_boker/pages/change_service.dart';
+import 'package:time_boker/pages/contactUs.dart';
+import 'package:time_boker/pages/promo.dart';
 import 'package:time_boker/pages/v_service_manager_page.dart';
 
 class Setting extends StatelessWidget {
@@ -8,9 +13,9 @@ class Setting extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       //  backgroundColor: Color.fromRGBO(1000, 1000, 1000, 100),
-      backgroundColor: Colors.white,
+
       body: Padding(
-        padding: const EdgeInsets.all(18.0),
+        padding: const EdgeInsets.symmetric(horizontal: 18.0),
         child: ListView(
           //crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -41,49 +46,94 @@ class Setting extends StatelessWidget {
                     icon: Icon(Icons.notifications))
               ],
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 50, bottom: 20),
-              child: Center(
-                child: Text(
-                  'Nous ecrire',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
-                ),
+            Container(
+              margin: EdgeInsets.symmetric(vertical: 8),
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.all(Radius.circular(15))),
+              child: ListTile(
+                title: Text('Porte-feuille '),
+                leading: Icon(Icons.monetization_on_outlined),
+                trailing: Icon(Icons.keyboard_arrow_right),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Pocket()),
+                  );
+                },
               ),
             ),
             Container(
-              constraints: BoxConstraints(
-                  minHeight: MediaQuery.of(context).size.height * 1.5 / 3),
+              margin: EdgeInsets.symmetric(vertical: 8),
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(18),
-                border: Border.all(
-                  width: .5,
-// assign the color to the border color
-                  color: Colors.black54,
-                ),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: TextField(
-                  maxLines: null,
-                  decoration: InputDecoration(border: InputBorder.none),
-                ),
+                  color: Colors.white,
+                  borderRadius: BorderRadius.all(Radius.circular(15))),
+              child: ListTile(
+                title: Text('Promo'),
+                leading: Icon(Icons.notifications_active_outlined),
+                trailing: Icon(Icons.keyboard_arrow_right),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Promo()),
+                  );
+                },
               ),
             ),
             Container(
-              width: MediaQuery.of(context).size.width - 10,
-              margin: EdgeInsets.all(18),
-              height: 40,
+              margin: EdgeInsets.symmetric(vertical: 8),
               decoration: BoxDecoration(
-                  color: Colors.orangeAccent,
-                  borderRadius: BorderRadius.circular(18)),
-              child: TextButton(
-                onPressed: () {},
-                child: Text(
-                  'Envoyé',
-                  style: TextStyle(color: Colors.black),
-                ),
+                  color: Colors.white,
+                  borderRadius: BorderRadius.all(Radius.circular(15))),
+              child: ListTile(
+                title: Text('nous Ecrire'),
+                leading: Icon(Icons.contact_support_outlined),
+                trailing: Icon(Icons.keyboard_arrow_right),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ContactUs()),
+                  );
+                },
               ),
             ),
+         
+            Container(
+              margin: EdgeInsets.symmetric(vertical: 8),
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.all(Radius.circular(15))),
+              child: ListTile(
+                title: Text('Change Profile'),
+                leading: Icon(Icons.manage_accounts_outlined),
+                trailing: Icon(Icons.keyboard_arrow_right),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ChangeProfile()),
+                  );
+                },
+              ),
+            ),
+         
+            Container(
+              margin: EdgeInsets.symmetric(vertical: 8),
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.all(Radius.circular(15))),
+              child: ListTile(
+                title: Text('Change service'),
+                leading: Icon(Icons.manage_history_outlined),
+                trailing: Icon(Icons.keyboard_arrow_right),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ChangeService()),
+                  );
+                },
+              ),
+            ),
+         
           ],
         ),
       ),
