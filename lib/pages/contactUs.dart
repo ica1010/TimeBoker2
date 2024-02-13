@@ -50,7 +50,7 @@ class ContactUs extends StatelessWidget {
               margin: EdgeInsets.all(18),
               height: 40,
               decoration: BoxDecoration(
-                  color: Colors.orangeAccent,
+                  color:Color.fromARGB(255, 255, 219, 170),
                   borderRadius: BorderRadius.circular(18)),
               child: TextButton(
                 onPressed: () {},

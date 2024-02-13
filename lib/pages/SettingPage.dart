@@ -115,24 +115,7 @@ class Setting extends StatelessWidget {
                 },
               ),
             ),
-         
-            Container(
-              margin: EdgeInsets.symmetric(vertical: 8),
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.all(Radius.circular(15))),
-              child: ListTile(
-                title: Text('Change service'),
-                leading: Icon(Icons.manage_history_outlined),
-                trailing: Icon(Icons.keyboard_arrow_right),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => ChangeService()),
-                  );
-                },
-              ),
-            ),
+            
          
           ],
         ),

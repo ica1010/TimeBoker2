@@ -112,8 +112,8 @@ Padding(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Container(
-                      padding:
-                          EdgeInsets.symmetric(vertical: 2, horizontal: 18),
+             height: 40,
+                          width: 160,
                       decoration: BoxDecoration(
                           color: Colors.blue,
                           borderRadius: BorderRadius.circular(18)),
@@ -128,10 +128,10 @@ Padding(
                       ),
                     ),
                     Container(
-                      padding:
-                          EdgeInsets.symmetric(vertical: 2, horizontal: 18),
+                          height: 40,
+                          width: 110,
                       decoration: BoxDecoration(
-                          color: Colors.orangeAccent,
+                          color:Color.fromARGB(255, 254, 212, 152),
                           borderRadius: BorderRadius.circular(18)),
                       child: TextButton(
                         onPressed: () {

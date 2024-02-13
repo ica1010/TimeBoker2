@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../pages/change_profile.dart';
-import '../pages/change_service.dart';
-import '../pages/v_service_manager_page.dart';
-
 class Header extends StatefulWidget {
   final bool back;
   final bool search;
-
 
   Header({
     super.key,
@@ -20,9 +15,6 @@ class Header extends StatefulWidget {
 }
 
 class _HeaderState extends State<Header> {
-  bool admin = true;
-
-  @override
   Widget build(BuildContext context) {
     return Column(
       children: [
@@ -43,98 +35,54 @@ class _HeaderState extends State<Header> {
                 ],
               ),
             ),
-          IconButton(
-  icon: Icon(Icons.more_vert),
-  onPressed: () {
-    showMenu(
-      context: context,
-      position: RelativeRect.fromLTRB(100, 0, 0, 0),
-      items: [
-        PopupMenuItem<String>(
-          value: 'admin',
-          child: Row(
-            children: [
-              Expanded(child: Text('Je suis admin')),
-              Switch(
-                value: admin,
-                onChanged: (value) {
-                  setState(() {
-                    admin = value;
-                    print('Admin status: $admin');
-                  });
-                },
-              ),
-            ],
-          ),
-        ),
-        // Ajoutez d'autres éléments de menu si nécessaire
-      ],
-    ).then((value) {
-      // Gérez la sélection d'élément de menu
-      if (value == 'option_1') {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => VServiceManagerPage()),
-        );
-      } else if (value == 'option_2') {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => ChangeService()),
-        );
-      } else if (value == 'option_3') {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => ChangeProfile()),
-        );
-      } else {
-        print('Selected: $value');
-      }
-    });
-  },
-),
-
+            IconButton(
+              icon: Icon(Icons.more_vert),
+              onPressed: () {
+              },
+            ),
           ],
         ),
-    widget.search ? Padding(
-          padding: const EdgeInsets.symmetric(vertical: 20.0),
-          child: Row(
-            children: [
-              Expanded(
-                child: Container(
-                  height: 45,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.all(Radius.circular(30.0)),
-                  ),
-                  child: TextField(
-                    decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.search),
-                      border: OutlineInputBorder(
-                          borderRadius:
-                              BorderRadius.all(Radius.circular(30.0))),
-                      hintText: 'Enter to search ...',
+        widget.search
+            ? Padding(
+                padding: const EdgeInsets.symmetric(vertical: 20.0),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Container(
+                        height: 45,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.all(Radius.circular(30.0)),
+                        ),
+                        child: TextField(
+                          decoration: InputDecoration(
+                            prefixIcon: Icon(Icons.search),
+                            border: OutlineInputBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(30.0))),
+                            hintText: 'Enter to search ...',
+                          ),
+                        ),
+                      ),
                     ),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 4.0),
-                child: Container(
-                  height: 40,
-                  decoration: BoxDecoration(
-                      color: Colors.orange,
-                      borderRadius: BorderRadius.circular(8)),
-                  child: IconButton(
-                    onPressed: () {},
-                    icon: Image.asset(
-                        'icon/tune_FILL0_wght200_GRAD0_opsz40 1.png'),
-                  ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                      child: Container(
+                        height: 40,
+                        decoration: BoxDecoration(
+                            color: Color.fromARGB(255, 255, 219, 170),
+                            borderRadius: BorderRadius.circular(8)),
+                        child: IconButton(
+                          onPressed: () {},
+                          icon: Image.asset(
+                              'icon/tune_FILL0_wght200_GRAD0_opsz40 1.png'),
+                        ),
+                      ),
+                    )
+                  ],
                 ),
               )
-            ],
-          ),
-        ) : Text('') ,
-      
+            : Text(''),
       ],
     );
   }
