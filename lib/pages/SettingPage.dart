@@ -6,6 +6,8 @@ import 'package:time_boker/pages/contactUs.dart';
 import 'package:time_boker/pages/promo.dart';
 import 'package:time_boker/pages/v_service_manager_page.dart';
 
+import 'LoginPage.dart';
+
 class Setting extends StatelessWidget {
   const Setting({super.key});
 
@@ -37,11 +39,6 @@ class Setting extends StatelessWidget {
                 ),
                 IconButton(
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => VServiceManagerPage()),
-                      );
                     },
                     icon: Icon(Icons.notifications))
               ],
@@ -115,7 +112,41 @@ class Setting extends StatelessWidget {
                 },
               ),
             ),
-            
+            Container(
+              margin: EdgeInsets.symmetric(vertical: 8),
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.all(Radius.circular(15))),
+              child: ListTile(
+                title: Text('Login'),
+                leading: Icon(Icons.login),
+                trailing: Icon(Icons.keyboard_arrow_right),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => LoginPage()),
+                  );
+                },
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.symmetric(vertical: 20),
+              decoration: BoxDecoration(
+                  color: Colors.redAccent,
+                  borderRadius: BorderRadius.all(Radius.circular(15))),
+              child: ListTile(
+                title:Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Icon(Icons.logout)
+                    ,
+                    Text('Logout')
+                  ],
+                ) ,
+                onTap: (){} ,
+              ),
+            ),
          
           ],
         ),
