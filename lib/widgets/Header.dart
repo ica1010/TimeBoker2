@@ -55,6 +55,8 @@ class _HeaderState extends State<Header> {
                           borderRadius: BorderRadius.all(Radius.circular(30.0)),
                         ),
                         child: TextField(
+                          textAlignVertical: TextAlignVertical.bottom,
+                          textAlign: TextAlign.left,
                           decoration: InputDecoration(
                             prefixIcon: Icon(Icons.search),
                             border: OutlineInputBorder(

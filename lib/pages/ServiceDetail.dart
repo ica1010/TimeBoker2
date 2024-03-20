@@ -27,19 +27,21 @@ class ServiceDetailState extends State<ServiceDetail> {
               padding: const EdgeInsets.only(bottom: 8.0),
               child: Row(
                 children: [
+
                   Expanded(
-                    child: Container(
-                      height: 40,
+                    child: Container(height: 40,
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.all(Radius.circular(30.0)),
                       ),
                       child: TextField(
+                        textAlign: TextAlign.start,
+                        textAlignVertical: TextAlignVertical.top,
                         decoration: InputDecoration(
                           border: OutlineInputBorder(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(30.0))),
-                          hintText: 'Lundi 11 decembre 2023',
+                        //  hintText: 'Lundi 11 decembre 2023',
                         ),
                       ),
                     ),
@@ -63,6 +65,8 @@ class ServiceDetailState extends State<ServiceDetail> {
                       borderRadius: BorderRadius.all(Radius.circular(30.0)),
                     ),
                     child: TextField(
+                      textAlignVertical: TextAlignVertical.bottom,
+                      textAlign: TextAlign.left,
                       decoration: InputDecoration(
                         border: OutlineInputBorder(
                             borderRadius:
@@ -106,170 +110,173 @@ class ServiceDetailState extends State<ServiceDetail> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Stack(
-              children: [
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height / 2.2,
-                  decoration: BoxDecoration(
-                      image: DecorationImage(
-                          fit: BoxFit.cover,
-                          image: AssetImage(
-                            (widget.service)['Bimage'],
-                          )),
-                      borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(40),
-                          bottomRight: Radius.circular(40))),
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      margin: EdgeInsets.only(
-                          top: MediaQuery.of(context).size.height / 3),
-                      height: 120,
-                      width: 120,
-                      decoration: BoxDecoration(
+        child: Padding(
+          padding: const EdgeInsets.only(top: 50.0),
+          child: Column(
+            children: [
+              Stack(
+                children: [
+                  Container(
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height / 2.2,
+                    decoration: BoxDecoration(
                         image: DecorationImage(
                             fit: BoxFit.cover,
                             image: AssetImage(
-                              (widget.service)['Fimage'],
+                              (widget.service)['Bimage'],
                             )),
-                        color: Colors.green,
-                        shape: BoxShape.circle,
+                        borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(40),
+                            bottomRight: Radius.circular(40))),
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        margin: EdgeInsets.only(
+                            top: MediaQuery.of(context).size.height / 3),
+                        height: 120,
+                        width: 120,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: AssetImage(
+                                (widget.service)['Fimage'],
+                              )),
+                          color: Colors.green,
+                          shape: BoxShape.circle,
+                        ),
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 8),
-                      child: Text(
-                        (widget.service)['Name'],
-                        style: TextStyle(
-                            fontWeight: FontWeight.w700, fontSize: 26),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 8),
+                        child: Text(
+                          (widget.service)['Name'],
+                          style: TextStyle(
+                              fontWeight: FontWeight.w700, fontSize: 26),
+                        ),
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 50),
-                      child: Text(
-                        textAlign: TextAlign.center,
-                        (widget.service)['Detail'] as String ?? '',
-                        style: TextStyle(fontSize: 12),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 50),
+                        child: Text(
+                          textAlign: TextAlign.center,
+                          (widget.service)['Detail'] as String ?? '',
+                          style: TextStyle(fontSize: 12),
+                        ),
                       ),
+                      Padding(
+                        padding:
+                            const EdgeInsets.only(top: 18.0, right: 4, left: 4),
+                        child: Row(
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.only(right: 15),
+                              child: Image.asset('icon/Group 3.png'),
+                            ),
+                            Expanded(
+                              child: Text((widget.service)['City'],
+                                  style: TextStyle(
+                                      fontSize: 14, fontWeight: FontWeight.w600)),
+                            ),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 10.0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text((widget.service)['Jour'],
+                                      style: TextStyle(
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w600)),
+                                  Text((widget.service)['Heure'],
+                                      style: TextStyle(
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w600)),
+                                ],
+                              ),
+                            ),
+                            Image.asset('icon/calendar_2693507 1.png')
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  Positioned(
+                      right: 15,
+                      top: 20,
+                      child: IconButton(
+                          onPressed: () {},
+                          icon: Icon(
+                            Icons.menu_outlined,
+                            color: Colors.white,
+                          ))),
+                  Positioned(
+                      left: 0,
+                      top: 20,
+                      child: BackButton(
+                        color: Colors.white,
+                      )),
+                ],
+              ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0) +
+                        const EdgeInsets.only(bottom: 8.0),
+                    child: Text(
+                      'Services',
+                      style: TextStyle(fontSize: 24, fontWeight: FontWeight.w700),
                     ),
-                    Padding(
-                      padding:
-                          const EdgeInsets.only(top: 18.0, right: 4, left: 4),
-                      child: Row(
-                        children: [
-                          Padding(
-                            padding: EdgeInsets.only(right: 15),
-                            child: Image.asset('icon/Group 3.png'),
+                  ),
+                ],
+              ),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 18.0, vertical: 4),
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(30)),
+                  child: Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        Expanded(
+                            child: Padding(
+                          padding: const EdgeInsets.only(left: 8.0),
+                          child: Text(
+                            'Coupe Simple',
+                            style: TextStyle(fontWeight: FontWeight.w600),
                           ),
-                          Expanded(
-                            child: Text((widget.service)['City'],
-                                style: TextStyle(
-                                    fontSize: 14, fontWeight: FontWeight.w600)),
-                          ),
-                          Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 10.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text((widget.service)['Jour'],
-                                    style: TextStyle(
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w600)),
-                                Text((widget.service)['Heure'],
-                                    style: TextStyle(
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w600)),
-                              ],
+                        )),
+                        Expanded(
+                            child: Text(
+                          '1000 FCFA',
+                          style: TextStyle(fontWeight: FontWeight.w700),
+                        )),
+                        Container(
+                          decoration: BoxDecoration(
+                              color: Colors.blue,
+                              borderRadius: BorderRadius.circular(18)),
+                          child: TextButton(
+                            onPressed: () {
+                              _showMyDialog();
+                            },
+                            child: Text(
+                              'Reservé',
+                              style: TextStyle(color: Colors.white),
                             ),
                           ),
-                          Image.asset('icon/calendar_2693507 1.png')
-                        ],
-                      ),
+                        )
+                      ],
                     ),
-                  ],
-                ),
-                Positioned(
-                    right: 15,
-                    top: 20,
-                    child: IconButton(
-                        onPressed: () {},
-                        icon: Icon(
-                          Icons.menu_outlined,
-                          color: Colors.white,
-                        ))),
-                Positioned(
-                    left: 0,
-                    top: 20,
-                    child: BackButton(
-                      color: Colors.white,
-                    )),
-              ],
-            ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8.0) +
-                      const EdgeInsets.only(bottom: 8.0),
-                  child: Text(
-                    'Services',
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.w700),
-                  ),
-                ),
-              ],
-            ),
-            Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 18.0, vertical: 4),
-              child: Container(
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(30)),
-                child: Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                      Expanded(
-                          child: Padding(
-                        padding: const EdgeInsets.only(left: 8.0),
-                        child: Text(
-                          'Coupe Simple',
-                          style: TextStyle(fontWeight: FontWeight.w600),
-                        ),
-                      )),
-                      Expanded(
-                          child: Text(
-                        '1000 FCFA',
-                        style: TextStyle(fontWeight: FontWeight.w700),
-                      )),
-                      Container(
-                        decoration: BoxDecoration(
-                            color: Colors.blue,
-                            borderRadius: BorderRadius.circular(18)),
-                        child: TextButton(
-                          onPressed: () {
-                            _showMyDialog();
-                          },
-                          child: Text(
-                            'Reservé',
-                            style: TextStyle(color: Colors.white),
-                          ),
-                        ),
-                      )
-                    ],
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

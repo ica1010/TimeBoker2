@@ -16,7 +16,7 @@ class _ServiceListState extends State<ServiceList> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.only(top: 30, right: 18, left: 18 ),
+        padding: const EdgeInsets.only(top: 50, right: 18, left: 18 ),
         child: Column(
           children: [
             Header(back: true, search: false,),

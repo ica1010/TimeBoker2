@@ -23,7 +23,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.only
-        (top :30.0),
+        (top :50.0),
         child: Stack(
           children: [
             pages.elementAt(_page_index),
